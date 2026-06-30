@@ -1,4 +1,11 @@
 //https://usaco.org/index.php?page=viewproblem2&cpid=1499
+/*
+ If a and c are friends, at least 1 of them must be connected to b. Therefore, if ab no connect and cb no connect, then ac no connect. A complement graph is a graph where everything is flipped, if there originally was connection now there is not and vice versa. Therefore, in the complement graph if ab connect and cb connect then ac connnect. 
+Therefore we think of adding edges in the complement graph instead of removing them in the original graph. 
+Now, we should perform dp over different combinations of subsets in the graph, where in the complementary graph all the subsets should be fully connected. 
+dp[mask] = min(dp[mask], dp[mask & ~sub] + flip[sub]);
+flip[sub] is the net amount of changes required to go from current subset to fully connected subset. 
+*/
 #include <iostream>
 #include <algorithm>
 #include <cstdio>
